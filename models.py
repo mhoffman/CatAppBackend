@@ -1,4 +1,5 @@
 # global imports
+
 import sqlalchemy
 import sqlalchemy.types
 import sqlalchemy.ext.declarative
@@ -59,7 +60,7 @@ class Information(Base):
 class System(Base):
     __tablename__ = 'systems'
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
-    rowid = sqlalchemy.Column(sqlalchemy.Integer, )
+    #rowid = sqlalchemy.Column(sqlalchemy.Integer, )
     unique_id = sqlalchemy.Column(sqlalchemy.String, )
     ctime = sqlalchemy.Column(sqlalchemy.Float, )
     mtime = sqlalchemy.Column(sqlalchemy.Float, )
@@ -273,7 +274,7 @@ class Species(Base):
     __tablename__ = 'species'
     id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey(
         'systems.id'), primary_key=True)
-    rowid = sqlalchemy.Column(sqlalchemy.Integer, )
+    #rowid = sqlalchemy.Column(sqlalchemy.Integer, )
     Z = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,)
     n = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,)
 
@@ -282,7 +283,7 @@ class Key(Base):
     __tablename__ = 'keys'
     id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey(
         'systems.id'), primary_key=True)
-    rowid = sqlalchemy.Column(sqlalchemy.Integer, )
+    #rowid = sqlalchemy.Column(sqlalchemy.Integer, )
     key = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
 
@@ -290,7 +291,7 @@ class NumberKeyValue(Base):
     __tablename__ = 'number_key_values'
     id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey(
         'systems.id'), primary_key=True)
-    rowid = sqlalchemy.Column(sqlalchemy.Integer, )
+    #rowid = sqlalchemy.Column(sqlalchemy.Integer, )
     key = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
     value = sqlalchemy.Column(sqlalchemy.Float,)
 
@@ -299,6 +300,6 @@ class TextKeyValue(Base):
     __tablename__ = 'text_key_values'
     id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey(
         'systems.id'), primary_key=True)
-    rowid = sqlalchemy.Column(sqlalchemy.Integer, )
+    #rowid = sqlalchemy.Column(sqlalchemy.Integer, )
     key = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
     value = sqlalchemy.Column(sqlalchemy.String,)
