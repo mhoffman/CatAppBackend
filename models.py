@@ -1,5 +1,4 @@
 # global imports
-
 import sqlalchemy
 import sqlalchemy.types
 import sqlalchemy.ext.declarative
