@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 # global imports
 import flask
 import flask_graphql
@@ -9,7 +8,6 @@ from flask import Blueprint
 
 # local imports
 import models
-import models_catapp
 import api
 #import qmdb_api
 from apps.AtoML.run_atoml import atoml_blueprint
@@ -39,8 +37,9 @@ def index():
 def apps():
         return "Apps: AtoML"
 
+#print api.schema
 # AtoML app
-app.register_blueprint(atoml_blueprint)
+#app.register_blueprint(atoml_blueprint)
 
 # Graphql view
 app.add_url_rule('/graphql',
@@ -49,22 +48,22 @@ app.add_url_rule('/graphql',
             schema=api.schema,
             graphiql=True,
             context={
-                'session': models_catapp.db_session,
+                'session': models.db_session,
                 }
             )
         )
 
-## Graphql view
+# Graphql view
 #app.add_url_rule('/qmdb_graphql',
-        #view_func=flask_graphql.GraphQLView.as_view(
-            #'qmdb_graphql',
-            #schema=qmdb_api.schema,
-            #graphiql=True,
-            #context={
-                #'session': qmdb_api.db_session,
-                #}
-            #)
-        #)
+#        view_func=flask_graphql.GraphQLView.as_view(
+#            'qmdb_graphql',
+#            schema=qmdb_api.schema,
+#            graphiql=True,
+#            context={
+#                'session': qmdb_api.db_session,
+#                }
+#            )
+#        )
 
 
 if __name__ == '__main__':
