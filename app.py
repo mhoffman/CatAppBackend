@@ -53,6 +53,12 @@ except ImportError:
     warnings.warn('catKitDemo not available.')
     catKitDemo = None
 
+try:
+    from apps.upload import upload
+except ImportError:
+    warnings.warn('Upload app not available.')
+    upload = None
+
 
 # NumpyEncoder: useful for JSON serializing
 # Dictionaries that contain Numpy Arrays
@@ -109,8 +115,6 @@ if catKitDemo is not None:
     app.register_blueprint(catKitDemo, url_prefix='/apps/catKitDemo')
 
 
-from apps.upload import upload
-app.register_blueprint(upload, url_prefix='/apps/upload')
 
 # Graphql view
 app.add_url_rule('/graphql',
@@ -143,6 +147,8 @@ if prototypeSearch is not None:
     app.register_blueprint(prototypeSearch, url_prefix='/apps/prototypeSearch')
 if catlearn_blueprint is not None:
     app.register_blueprint(catlearn_blueprint, url_prefix='/apps/catlearn')
+if upload is not None:
+    app.register_blueprint(upload, url_prefix='/apps/upload')
 
 
 if __name__ == '__main__':
