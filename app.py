@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 # global imports
+import os
 
 import numpy as np
 import json
@@ -45,7 +46,7 @@ if not app.debug:
 
 app.json_encoder = NumpyEncoder
 
-cors = CORS(app)
+cors = CORS(app, supports_credentials=True)
 
 #, resources={r"/graphql/*":
 #    {"origins":
@@ -78,6 +79,9 @@ app.register_blueprint(bulk_enumerator, url_prefix='/apps/bulkEnumerator')
 
 from apps.catKitDemo import catKitDemo
 app.register_blueprint(catKitDemo, url_prefix='/apps/catKitDemo')
+
+from apps.upload import upload
+app.register_blueprint(upload, url_prefix='/apps/upload')
 
 # Graphql view
 app.add_url_rule('/graphql',
@@ -132,4 +136,8 @@ if __name__ == '__main__':
         logging.basicConfig()
         logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
+    # This allows us to use a plain HTTP callback
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = "1"
+
+    app.secret_key = os.urandom(64)
     app.run()
