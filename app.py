@@ -180,15 +180,8 @@ if __name__ == '__main__':
         logging.basicConfig()
         logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
-<<<<<<< HEAD
     # This allows us to use a plain HTTP callback
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = "1"
 
     app.secret_key = os.urandom(64)
-=======
-    # for local testing
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-
-    app.secret_key = os.urandom(48)
->>>>>>> feature_upload
     app.run()
