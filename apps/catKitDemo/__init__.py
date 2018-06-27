@@ -396,12 +396,8 @@ def get_adsorption_sites(request=None, return_atoms=False, place_holder=None):
 
                 reactants = []
                 gas_phase_molecules = set()
-<<<<<<< HEAD
-                for molecule, factor in stoichiometry_factors[adsorbate].items():
-=======
                 for molecule, factor in stoichiometry_factors[
                         adsorbate].items():
->>>>>>> kirsten.master
                     reactants.append(
                         '{factor}{molecule}gas'.format(**locals()))
                     gas_phase_molecules.add(molecule)
@@ -456,7 +452,6 @@ def get_adsorption_sites(request=None, return_atoms=False, place_holder=None):
         })
 
 
-<<<<<<< HEAD
 @catKitDemo.route('/place_adsorbates', methods=['GET', 'POST'])
 def place_adsorbates(request=None, return_atoms=False, place_holder='F'):
     request = flask.request if request is None else request
@@ -573,8 +568,6 @@ def place_adsorbates(request=None, return_atoms=False, place_holder='F'):
     })
 
 
-=======
->>>>>>> kirsten.master
 @catKitDemo.route('/generate_dft_input', methods=['GET', 'POST'])
 def generate_dft_input(request=None, return_data=False):
     request = flask.request if request is None else request
